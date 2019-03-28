@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>多普勒效应</title>
+    <meta name="description" content="Doppler-effect">
+    <style type="text/css">
+      #play {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        text-align: center;
+        z-index: 1;
+    }
+      .myButton {
+      background-color:#f9f9f9;
+      -moz-border-radius:28px;
+      -webkit-border-radius:28px;
+      border-radius:28px;
+      border:1px solid #dcdcdc;
+      display:inline-block;
+      cursor:pointer;
+      color:#666666;
+      font-family:Arial;
+      font-size:28px;
+      font-weight:bold;
+      padding:32px 48px;
+      text-decoration:none;
+      text-shadow:0px 1px 0px #ffffff;
+    }
+    .myButton:hover {
+      background-color:#e9e9e9;
+    }
+    .myButton:active {
+      position:relative;
+      top:1px;
+    }
+    </style>
+    <script src="js\aframe.min.js"></script>
+    <script src="js\aframe-extras.min.js" ></script>
+    <!-- include ar.js for A-Frame -->
+    <script src="js\aframe-ar.js"></script>
+    <script src="js\howler.core.min.js"></script>
+    <script>
+        function myFunction(){
+          var sound = new Howl({
+          src: ['car.mp3'],
+          autoplay: false,
+          loop: true,
+          volume: 0.5,
+          onplayerror: function() {
+          sound.once('unlock', function() {
+          sound.play();
+          });
+        }
+        });
+        sound.play();
+
+        var sceneEl = document.querySelector('a-scene');
+        var entityEl = sceneEl.querySelector('a-entity');
+        entityEl.addEventListener('foo', function () {
+            entityEl.setAttribute('animation-mixer', 'clip:Take 001; loop:2; timeScale: 1; crossFadeDuration: 1');
+          });
+          entityEl.emit('foo');
+          document.getElementById('playbtn').style.display = "none";
+
+    }
+    </script>
+  </head>
+  
+  <body style="margin : 0px; overflow: hidden;">
+    <div id="play">
+    <button class="myButton" id="playbtn" onclick="myFunction()">play</button>
+
+    </div>
+    <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;" vr-mode-ui="enabled: false">
+      <a-assets>
+        <a-asset-item id="doppler" response-type="arraybuffer" src="assets\doppler-effect.glb"></a-asset-item>
+      </a-assets>
+      
+      <a-marker preset="hiro">
+        <a-entity gltf-model="#doppler" scale="0.2 0.2 0.2" position="-1 0 -1" rotation="0 45 0"></a-entity>
+      </a-marker>
+  	<a-entity camera></a-entity>
+    </a-scene>
+  </body>
+</html>
