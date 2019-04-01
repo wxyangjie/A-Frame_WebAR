@@ -6,12 +6,12 @@
 
 第一步：用手机浏览器打开[AR课件资源](<https://wxyangjie.github.io/A-Frame_WebAR/index.html>)网站（可用**浏览器**扫描下方二维码，注意不要使用微信或者支付宝）；
 
-![](images\website.png)
+![](https://raw.githubusercontent.com/wxyangjie/A-Frame_WebAR/master/images/website.png)
 
 第二步：用摄像头对准下方图片（[打印下载无透视版](<https://jeromeetienne.github.io/AR.js/data/images/HIRO.jpg>)）。
 
-![](images\HIRO2.jpg)
+![](https://raw.githubusercontent.com/wxyangjie/A-Frame_WebAR/master/images/HIRO2.jpg)
 
 **完成！**
 
-![](images\test.jpg)
+![](https://raw.githubusercontent.com/wxyangjie/A-Frame_WebAR/master/images/test.jpg)
